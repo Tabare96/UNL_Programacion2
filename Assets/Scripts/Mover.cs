@@ -7,7 +7,7 @@ public class Mover : MonoBehaviour
     // Variables a configurar desde el editor
     [Header("Configuracion")]
     [SerializeField] float velocidad = 5f;
-
+    
     // Variables de uso interno en el script
     private float moverHorizontal;
     private Vector2 direccion;
