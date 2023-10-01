@@ -87,9 +87,9 @@ public class JefeFinal : MonoBehaviour
 
     private IEnumerator Movimiento()
     {
-        float tiempoMovimiento = 3f;
+        float tiempoMovimiento = 2f;
         float tiempoInicio = Time.time;
-        float velocidadMovimiento = 6f;
+        float velocidadMovimiento = 4f;
 
         Vector2 posicionInicial = transform.position;
         Vector2 posicionObjetivo = new Vector2(transform.position.x, transform.position.y + velocidadMovimiento);
