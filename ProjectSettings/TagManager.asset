@@ -7,6 +7,7 @@ TagManager:
   - Pared
   - Enemigo
   - Meta
+  - Lava
   layers:
   - Default
   - TransparentFX

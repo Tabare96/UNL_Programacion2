@@ -36,7 +36,14 @@ public class Jugador : MonoBehaviour
                 ReiniciarNivel();
             }
         }
+
+        else if (collision.gameObject.CompareTag("Lava"))
+        {
+            Debug.Log("Tocaste la Lava");
+            ReiniciarNivel();
+        }
     }
+
 
     private void ReiniciarNivel()
     {
