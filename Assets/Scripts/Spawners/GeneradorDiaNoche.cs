@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.U2D;
+using UnityEngine.Rendering.Universal;
+
 
 public class GeneradorDiaNoche : MonoBehaviour
 {
     [SerializeField] private Camera camara;
     [SerializeField] private Color nocheColor;
-    //[SerializeField] private Light2D luz2D;
+    [SerializeField] private Light2D luz2D;
 
     [SerializeField][Range(4, 128)] private int duracionDia;
     [SerializeField][Range(4, 24)] private int dias;
@@ -24,7 +26,7 @@ public class GeneradorDiaNoche : MonoBehaviour
     IEnumerator CambiarColor(float tiempo)
     {
         Color colorDestino = camara.backgroundColor == diaColor ? nocheColor : diaColor;
-        //Color colorDestinoLuz = luz2D.colo != Color.white ? Color.white : nocheColor;
+        Color colorDestinoLuz = luz2D.color != Color.white ? Color.white : nocheColor;
         float duracionCiclo = tiempo * 0.6f;
         float duracionCambio = tiempo * 0.4f;
 
@@ -42,12 +44,12 @@ public class GeneradorDiaNoche : MonoBehaviour
                 float smothT = Mathf.SmoothStep(0f, 1f, t);
                 
                 camara.backgroundColor = Color.Lerp(camara.backgroundColor, colorDestino, smothT);
-                //luz2D.color = Color.Lerp(luz2D.color, colorDestinoLuz, smothT);
+                luz2D.color = Color.Lerp(luz2D.color, colorDestinoLuz, smothT);
 
                 yield return null;
             }
 
-            //colorDestinoLuz = luz2D.color != Color.white ? Color.white : nocheColor;
+            colorDestinoLuz = luz2D.color != Color.white ? Color.white : nocheColor;
             colorDestino = camara.backgroundColor == diaColor ? nocheColor : diaColor;
         }
     }
