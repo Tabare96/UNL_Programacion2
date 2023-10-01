@@ -6,11 +6,16 @@ using UnityEngine;
 public class Jugador : MonoBehaviour
 {
     [Header("Configuracion")]
-    [SerializeField] private float vida = 5000f;
+    [SerializeField] private float vida = 5f;
+    private float vidaMaxima = 5f;
 
     public void ModificarVida(float puntos)
     {
         vida += puntos;
+        if (vida > vidaMaxima)
+        {
+            vida = vidaMaxima;
+        }
         Debug.Log(EstasVivo());
     }
 

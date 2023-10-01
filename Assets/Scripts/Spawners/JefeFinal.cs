@@ -53,7 +53,8 @@ public class JefeFinal : MonoBehaviour
 
     private IEnumerator Disparar()
     {
-        for (int i = 0; i < 3; i++)
+        int cantidadDisparos = Random.Range(0, 5);
+        for (int i = 0; i < cantidadDisparos; i++)
         {
             yield return new WaitForSeconds(0.5f);
             Instantiate(prefabProyectil, puntoSpawnProyectil.position, Quaternion.identity);
@@ -64,7 +65,7 @@ public class JefeFinal : MonoBehaviour
     {
         float tiempoEmbestida = 2f;
         float tiempoInicio = Time.time;
-        float velocidadEmbestida = -10f; // Ajusta la velocidad de la embestida según tus necesidades
+        float velocidadEmbestida = -8f;
 
         Vector2 posicionInicial = transform.position;
         Vector2 posicionObjetivo = new Vector2(transform.position.x + velocidadEmbestida, transform.position.y);
@@ -86,7 +87,7 @@ public class JefeFinal : MonoBehaviour
 
     private IEnumerator Movimiento()
     {
-        float tiempoMovimiento = 3f; // Ajusta el tiempo de movimiento según tus necesidades
+        float tiempoMovimiento = 3f;
         float tiempoInicio = Time.time;
         float velocidadMovimiento = 6f;
 
