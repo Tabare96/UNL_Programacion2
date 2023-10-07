@@ -8,6 +8,7 @@ TagManager:
   - Enemigo
   - Meta
   - Lava
+  - Coleccionable
   layers:
   - Default
   - TransparentFX
