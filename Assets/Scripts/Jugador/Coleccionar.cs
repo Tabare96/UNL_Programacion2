@@ -7,7 +7,7 @@ public class Coleccionar : MonoBehaviour
     [SerializeField] private List<GameObject> colleccionables;
     [SerializeField] private GameObject bolsa;
 
-    private bool presioando = false;
+    private bool presionado = false;
 
     private void Awake()
     {
@@ -31,8 +31,8 @@ public class Coleccionar : MonoBehaviour
         {
             if (colleccionables.Count == 0) return;
 
-            presioando = !presioando;
-            colleccionables[0].SetActive(presioando);
+            presionado = !presionado;
+            colleccionables[0].SetActive(presionado);
         }
     }
 }

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2add9fca918f3bb45833fc1a6ca1d94e, type: 3}
+  m_Name: PerfilNormal
+  m_EditorClassIdentifier: 
+  experienciaProximoNivel: 14
+  escalarExperiencia: 180
+  velocidad: 9.04
+  fuerzaSalto: 5
+  vida: 15
+  jumpSFX: {fileID: 8300000, guid: b927f27ea12185243a8c1e6a459199c5, type: 3}
+  collisionSFX: {fileID: 8300000, guid: a8a3a25b29b807b4290d03fa5e4d805d, type: 3}

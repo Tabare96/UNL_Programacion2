@@ -12,7 +12,7 @@ public class Puzzle : MonoBehaviour
     private Stack<GameObject> items;
     private Dictionary<String, GameObject> inventario;
 
-    //private Progresion progresionJugador;
+    private Progresion progresionJugador;
 
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class Puzzle : MonoBehaviour
         CargarObjetivos();
         VerObjetivos();
 
-        //progresionJugador = GetComponent<Progresion>();
+        progresionJugador = GetComponent<Progresion>();
     }
 
     private void CargarObjetivos()
@@ -62,15 +62,24 @@ public class Puzzle : MonoBehaviour
             VerObjetivos();
             objetivo.transform.SetParent(bolsa.transform);
 
-            //progresionJugador.GanarExperiencia(10);
+            progresionJugador.GanarExperiencia(10);
         }
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J) && inventario.ContainsKey("Diamante")) UsarInventario(inventario["Diamante"]);
-        if (Input.GetKeyDown(KeyCode.K) && inventario.ContainsKey("Munieco")) UsarInventario(inventario["Munieco"]);
-        if (Input.GetKeyDown(KeyCode.L) && inventario.ContainsKey("Hongo")) UsarInventario(inventario["Hongo"]);
+        if (Input.GetKeyDown(KeyCode.J) && inventario.ContainsKey("Diamante"))
+        {
+            UsarInventario(inventario["Diamante"]);
+        }
+        if (Input.GetKeyDown(KeyCode.K) && inventario.ContainsKey("Munieco"))
+        {
+            UsarInventario(inventario["Munieco"]);
+        }
+        if (Input.GetKeyDown(KeyCode.L) && inventario.ContainsKey("Hongo"))
+        {
+            UsarInventario(inventario["Hongo"]);
+        }
     }
 
     private void UsarItem()
