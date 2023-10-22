@@ -15,7 +15,7 @@ MonoBehaviour:
   experienciaProximoNivel: 14
   escalarExperiencia: 180
   velocidad: 9.04
-  fuerzaSalto: 5
-  vida: 15
+  fuerzaSalto: 6
+  vida: 4
   jumpSFX: {fileID: 8300000, guid: b927f27ea12185243a8c1e6a459199c5, type: 3}
   collisionSFX: {fileID: 8300000, guid: a8a3a25b29b807b4290d03fa5e4d805d, type: 3}

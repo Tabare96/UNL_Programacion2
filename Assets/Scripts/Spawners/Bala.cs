@@ -6,7 +6,7 @@ public class Bala : MonoBehaviour
 {
     [Header("Configuracion")]
     [SerializeField] float velocidad = 5f;
-    [SerializeField] float puntosDeDanio = 1f;
+    [SerializeField] int puntosDeDanio = 1;
     void Update()
     {
         transform.position += Vector3.left * velocidad * Time.deltaTime;

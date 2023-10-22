@@ -1,66 +1,7 @@
-/*using System.Collections;
-using System.Collections.Generic;
-//using UnityEditor.PackageManager.Requests;
-using UnityEngine;
-
-public class Jugador : MonoBehaviour
-{
-    [Header("Configuracion")]
-    [SerializeField] private float vida = 5f;
-    private float vidaMaxima = 5f;
-
-    public void ModificarVida(float puntos)
-    {
-        vida += puntos;
-        if (vida > vidaMaxima)
-        {
-            vida = vidaMaxima;
-        }
-        Debug.Log(EstasVivo());
-    }
-
-
-    private bool EstasVivo()
-    {
-        return vida > 0;
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (!collision.gameObject.CompareTag("Meta")) { return; }
-
-        Debug.Log("GANASTE");
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Enemigo"))
-        {
-            if (vida <= 0)
-            {
-                ReiniciarNivel();
-            }
-        }
-
-        else if (collision.gameObject.CompareTag("Lava"))
-        {
-            Debug.Log("Tocaste la Lava");
-            ReiniciarNivel();
-        }
-    }
-
-
-    private void ReiniciarNivel()
-    {
-        //UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().name);
-
-        UnityEngine.SceneManagement.SceneManager.LoadScene(UnityEngine.SceneManagement.SceneManager.GetActiveScene().buildIndex);
-    }
-}*/
-
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Jugador : MonoBehaviour
 {
@@ -68,10 +9,30 @@ public class Jugador : MonoBehaviour
     private PerfilJugador perfilJugador;
     public PerfilJugador PerfilJugador { get => perfilJugador; }
 
-    public void ModificarVida(float puntos)
+
+    //------------ Eventos del Jugador ------------//
+
+    [SerializeField]
+    private UnityEvent<int> OnLivesChanged;
+    [SerializeField]
+    private UnityEvent<string> OnTextChanged;
+
+    private void Start()
+    {
+        OnLivesChanged.Invoke(perfilJugador.Vida);
+    }
+
+
+    public void ModificarVida(int puntos)
     {
         perfilJugador.Vida += puntos;
-        Debug.Log(EstasVivo());
+        
+        if (perfilJugador.Vida < 0) { perfilJugador.Vida = 0; }
+        else if (perfilJugador.Vida > 10) { perfilJugador.Vida = 10; }
+        
+        OnLivesChanged.Invoke(perfilJugador.Vida);
+        //Debug.Log("la vida del jugador es: " + perfilJugador.Vida);
+
     }
 
 

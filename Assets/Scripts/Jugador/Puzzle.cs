@@ -37,7 +37,7 @@ public class Puzzle : MonoBehaviour
     {
         foreach (GameObject objetivo in objetivos)
         {
-            Debug.Log(objetivo.name);
+           // Debug.Log(objetivo.name);
         }
     }
 
