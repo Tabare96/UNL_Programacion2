@@ -6,33 +6,53 @@ using TMPro;
 public class HUDController : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI miTexto;
-    
+
     [SerializeField] GameObject iconoVida;
     [SerializeField] GameObject contenedorIconosVida;
+
+    private void OnEnable()
+    {
+        GameEvents.OnPause += Pausar;
+        GameEvents.OnResume += Reanudar;
+    }
+
+    private void OnDisable()
+    {
+        GameEvents.OnPause -= Pausar;
+        GameEvents.OnResume -= Reanudar;
+    }
+
+    private void Pausar()
+    {
+
+        ActualizarTextoHUD("PAUSADO");
+    }
+
+    private void Reanudar()
+    {
+        ActualizarTextoHUD(GameManager.Instance.GetScore().ToString());
+    }
+
     public void ActualizarTextoHUD(string nuevoTexto)
     {
-        Debug.Log("SE LLAMA "+ nuevoTexto);
-        miTexto.text = nuevoTexto;
+        //miTexto.text = nuevoTexto;
     }
 
     public void ActualizarVidasHUD(int vidas)
     {
-        Debug.Log("ESTAS ACTUALIZANDO VIDAS");
         if (EstaVacioContenedor())
         {
             CargarContenedor(vidas);
-           return;
+            return;
         }
 
         if (CantidadIconosVidas() > vidas)
         {
             EliminarUltimoIcono();
-
         }
         else
         {
             CrearIcono();
-
         }
     }
 
@@ -65,3 +85,4 @@ public class HUDController : MonoBehaviour
         Instantiate(iconoVida, contenedorIconosVida.transform);
     }
 }
+ 

@@ -21,13 +21,15 @@ public class Jugador : MonoBehaviour
     private void Start()
     {
         OnLivesChanged.Invoke(perfilJugador.Vida);
+        OnTextChanged.Invoke(GameManager.Instance.GetScore().ToString());
     }
 
 
     public void ModificarVida(int puntos)
     {
         perfilJugador.Vida += puntos;
-
+        GameManager.Instance.AddScore(puntos * 100);
+        OnTextChanged.Invoke(GameManager.Instance.GetScore().ToString());
         if (perfilJugador.Vida < 0) { perfilJugador.Vida = 0; }
         else if (perfilJugador.Vida > 10) { perfilJugador.Vida = 10; }
 
@@ -48,11 +50,13 @@ public class Jugador : MonoBehaviour
         {
             Debug.Log("Toco la lava");
             //SceneManager.LoadScene(SceneManager.GetActiveScene()."Nivel1");
+            perfilJugador.Vida = 4;
             SceneManager.LoadScene("Nivel1");
 
         }
-        if (!collision.gameObject.CompareTag("Meta")) { return; }
-
-        Debug.Log("GANASTE");
+        if (collision.gameObject.CompareTag("Meta"))
+        {
+            Debug.Log("GANASTE");
+        }
     }
 }

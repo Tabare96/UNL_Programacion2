@@ -9,6 +9,7 @@ TagManager:
   - Meta
   - Lava
   - Coleccionable
+  - Bala
   layers:
   - Default
   - TransparentFX
